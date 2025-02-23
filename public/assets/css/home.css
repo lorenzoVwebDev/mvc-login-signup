@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  text-decoration: none;
+}
+
+:root {
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-section {
+  position: relative;
+  padding-top: calc(1vw + 1vh);
+  padding-bottom: calc(1vw + 1vh);
+  padding-left: calc(1vw + 1vh);
+  padding-right: calc(1vw + 1vh);
+  min-height: 70vh;
+}
+.main-section .crud-section {
+  display: flex;
+  flex-direction: column;
+}
+.main-section .crud-section #read-task {
+  border-radius: 25px;
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.main-section .crud-section #read-task:active {
+  box-shadow: 1px 1px 9px gray;
+}
+.main-section .crud-section form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: calc(0.6vw + 0.6vh);
+  border: solid 1px black;
+  padding-top: calc(0.3vw + 0.3vh);
+  padding-bottom: calc(0.3vw + 0.3vh);
+  padding-left: calc(0.5vw + 0.5vh);
+  padding-right: calc(0.5vw + 0.5vh);
+  border-radius: 10px;
+  margin-bottom: calc(1vw + 1vh);
+}
+.main-section .crud-section form fieldset input {
+  border-radius: calc(0.4vw + 0.4vh);
+  padding-left: calc(0.2vw + 0.2vh);
+}
+.main-section .crud-section form fieldset .form-actions {
+  display: flex;
+  justify-content: end;
+  margin-bottom: calc(1vw + 1vh);
+}
+.main-section .crud-section form fieldset .form-actions div {
+  display: flex;
+  gap: calc(1vw + 1vh);
+}
+.main-section .crud-section form fieldset .form-actions div button {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+  border: none;
+  background-color: #FF5F1F;
+  color: rgb(255, 255, 255);
+  border-radius: 25px;
+  padding-top: calc(0.3vw + 0.3vh);
+  padding-bottom: calc(0.3vw + 0.3vh);
+  padding-left: calc(0.5vw + 0.5vh);
+  padding-right: calc(0.5vw + 0.5vh);
+  box-shadow: 2px 2px 8px gray;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.main-section .crud-section form fieldset .form-actions div button:active {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px #FF3131;
+  color: rgb(8, 144, 255);
+}
+.main-section .crud-section form fieldset .form-actions div button:hover {
+  transform: scale(1.1);
+}
+.main-section .crud-section .tasklist {
+  margin-top: calc(1vh + 1vw);
+}
+.main-section .crud-section .tasklist .task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px black;
+  border-radius: 10px;
+  padding-left: calc(1vw + 1vh);
+  padding-right: calc(1vw + 1vh);
+  padding-top: calc(1vw + 1vh);
+  padding-bottom: calc(1vw + 1vh);
+  margin-bottom: calc(1vw + 1vh);
+}
+.main-section .crud-section .tasklist .task-container .task-info {
+  display: flex;
+  flex-direction: column;
+  gap: calc(1vw + 1vh);
+  width: 30%;
+}
+.main-section .crud-section .tasklist .task-container .task-info p {
+  border: solid 1px black;
+  border-radius: 10px;
+  min-height: calc(2vw + 2vh);
+  padding-left: calc(0.3vw + 0.3vh);
+}
+.main-section .crud-section .tasklist .task-container .task-infosmall:nth-child(1) {
+  background-color: green;
+}
+.main-section .crud-section .tasklist .task-container .task-actions {
+  display: flex;
+  gap: calc(1vw + 1vh);
+}
+.main-section .crud-section .tasklist .task-container .task-actions button {
+  font-family: "Poppins", serif;
+  font-weight: 700;
+  font-style: normal;
+  border: none;
+  background-color: #FF3131;
+  color: rgb(255, 255, 255);
+  border-radius: 25px;
+  padding-top: calc(0.3vw + 0.3vh);
+  padding-bottom: calc(0.3vw + 0.3vh);
+  padding-left: calc(0.5vw + 0.5vh);
+  padding-right: calc(0.5vw + 0.5vh);
+  box-shadow: 2px 2px 8px gray;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.main-section .crud-section .tasklist .task-container .task-actions button:nth-child(1) {
+  background-color: greenyellow !important;
+}
+.main-section .crud-section .tasklist .task-container .task-actions button:active {
+  background-color: rgb(255, 255, 255);
+  border: solid 1px #FF3131;
+  color: rgb(8, 144, 255);
+}
+.main-section .crud-section .tasklist .task-container .task-actions button:hover {
+  transform: scale(1.1);
+}
