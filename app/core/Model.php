@@ -141,7 +141,7 @@ class Model {
         $signinInstance = new Signin_json($credentials);
         $tokens = $signinInstance->userValidation();
         if (($_SESSION['username'] === $credentials['username']&&$_SESSION['password'] === $credentials['password'])&&(array_key_exists('access_token', $tokens) && array_key_exists('access_token', $tokens))) {
-
+          unset($signinInstance);
           return $tokens;
         } else {
           throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');

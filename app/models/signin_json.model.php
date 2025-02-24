@@ -34,6 +34,18 @@ class Signin_json {
     }
   }
 
+  function __destruct() {
+    foreach ($this->users_array as &$user) {
+      if ($user['username'] === $this->user_signin) {
+        $user['refresh-token'] = $this->refreshToken;
+        break;
+      } 
+    }
+
+    $encodedJson = json_encode($this->users_array);
+    file_put_contents(__DIR__.$this->users_data_json, $encodedJson);
+  }
+
   function userValidation() {
     foreach ($this->users_array as $user) {
       $hash = $user['password'];

@@ -1,11 +1,16 @@
 <?php
 class Admin extends Controller {
+  use Jasonwebtoken;
+
   public function dashboard($name) {
     $this->view($name);
   } 
 
   function taskcrud($type) {
+
     try {
+      $this->requireAuth();
+
       $crudArray = array (
         'insert',
         'select',
