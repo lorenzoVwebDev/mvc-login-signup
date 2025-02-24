@@ -43,7 +43,7 @@ class Signin_json {
         $_SESSION['password'] =$this->password_signin;
         
         $tokens = $this->generateTokens($_SESSION['username']); 
-
+        $this->refreshToken = $tokens['refresh_token'];
         return $tokens;
       }
     }
