@@ -25,11 +25,12 @@
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" pattern=".{8,}" form="sign-in-form" value="lorenzo.viganego@libero.it" name="username" required>
+        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" pattern="^(?=.{8,}$)([a-zA-Z0-9._-]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$
+" form="sign-in-form" value="lorenzo" name="username" required>
         <label for="floatingInput">Email address</label>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Biologia@22" name="password" form="sign-in-form" required>
+        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Domenica@47" name="password" form="sign-in-form" required>
         <label for="floatingPassword">Password</label>
       </div>
 
@@ -39,7 +40,8 @@
           Remember me
         </label>
       </div>
-      <button class="btn btn-primary w-100 py-2" type="submit" form="sign-in-form" id="signinsubmit-button" >Sign in</button>
+      <input type='hidden' name='authentication' value="sign-in">
+      <button class="btn btn-primary w-100 py-2" type="submit" form="sign-in-form" id="signinsubmit-button">Sign in</button>
       <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
     </form>
   </main>

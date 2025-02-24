@@ -1,6 +1,7 @@
 <?php
 class Model {
   use Database;
+
   public $givenDate = '';
   function __construct() {
     $this->givenDate = date('mdy');
@@ -137,7 +138,14 @@ class Model {
       if (file_exists(__DIR__."//..//models//signin_json.model.php")) {
         require_once(__DIR__."//..//models//signin_json.model.php"); 
 
-        
+        $signinInstance = new Signin_json($credentials);
+        $tokens = $signinInstance->userValidation();
+        if (($_SESSION['username'] === $credentials['username']&&$_SESSION['password'] === $credentials['password'])&&(array_key_exists('access_token', $tokens) && array_key_exists('access_token', $tokens))) {
+
+          return $tokens;
+        } else {
+          throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');
+        } 
       }
     }
   }

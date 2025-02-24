@@ -18,8 +18,8 @@ if ($_SERVER['SERVER_NAME'] == 'mvc-login-signup') {
   define('DBNAME', 'mvc_login_signup');
   define('DBUSER', 'root');
   define('DBPASSWORD', $_ENV['DB_PASSWORD']);
-  define('JWT_PRIVATE_KEY', $_ENV['PRIVATE_KEY']);
-  define('JWT_PUBLIC_KEY', $_ENV['PUBLIC_KEY']);
+  define('JWT_ACCESS_KEY', $_ENV['ACCESS_KEY']);
+  define('JWT_REFRESH_KEY', $_ENV['REFRESH_KEY']);
 } else {
   /*   we can use this ROOT constant in a index.php file to define a path <a href="<?= ROOT ?>path/to/page">Click Here</a>; The <?= ROOT?> syntax is a shorthand for <php? echo ROOT; ?>*/
   define('EMAILUSERNAME', $_ENV['EMAIL_USERNAME']);
@@ -33,8 +33,8 @@ if ($_SERVER['SERVER_NAME'] == 'mvc-login-signup') {
   define('DBNAME', 'mvc_login_signup');
   define('DBUSER', 'lorenzo');
   define('DBPASSWORD', $_ENV['DB_PASSWORD']);
-  define('JWT_PRIVATE_KEY', $_ENV['PRIVATE_KEY']);
-  define('JWT_PUBLIC_KEY', $_ENV['PUBLIC_KEY']);
+  define('JWT_ACCESS_KEY', $_ENV['ACCESS_KEY']);
+  define('JWT_REFRESH_KEY', $_ENV['REFRESH_KEY']);
 };
 
 //used to set debug mode on or off, in debug mode on we are goin to show all the errors, is used only in development modality, once that the application is online is must be set as false in order to not show users what errors happen

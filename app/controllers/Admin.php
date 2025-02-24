@@ -88,21 +88,21 @@ class Admin extends Controller {
         header('Content-Type: application/json');
         $response['result'] = $e->getMessage();
         $response['status'] = $e->getCode();
-/*         echo json_encode($response); */
         require_once(__DIR__ ."//..//models//logs.model.php");
-        $exception = new Logs_model($e->getMessage()." ".$e->getFile(), 'exception');
+        $exception = new Logs_model($e->getMessage()." ".(string) $e->getFile(), 'exception');
         $last_log_message = $exception->logException();
         unset($exception);
+        echo json_encode($response);
       } else {
         http_response_code(500);
         header('Content-Type: application/json');
         $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
         $response['status'] = 500;
-/*         echo json_encode($response); */
         require_once(__DIR__ ."//..//models//logs.model.php");
-        $exception = new Logs_model($e->getMessage()." ".$e->getFile(), 'exception');
+        $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
         $last_log_message = $exception->logException();
         unset($exception);
+        echo json_encode($response);
       }
     }
 

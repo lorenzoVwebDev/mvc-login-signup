@@ -68,32 +68,32 @@ class Dog {
             throw new Exception('"dog_interface.php" dog not created');
           }
         } else {
-          http_response_code(401);
-          headers('Content-Type: text/plain');
-          echo 'Missing or invalid parameters. Please go back to the dog home page to enter valid information. Dog Creation Page';
-          throw new Exception('missing parameters', 401);
+          throw new Exception('Missing or invalid parameters. Please go back to the dog home page to enter valid information. Dog Creation Page', 401);
         }
       } else {
-        http_response_code(401);
-        headers('Content-Type: text/plain');
-        echo 'Request is not valid';
-        throw new Exception('request not valid', 401);
-        
+        throw new Exception('Request is not valid', 401);
       } 
       } catch (Exception $e) {
-        require_once(__DIR__ ."//..//models//logs.model.php");
-        $exception = new Logs_model($e->getMessage(), 'exception');
-        $last_log_message = $exception->logException();
-        unset($exception);
-        $exceptionCode = $e->getCode();
-        if ($exceptionCode >= 500) {
-          http_response_code(500);
-          header("Content-Type: text/plain");
-          echo "Error 500: We are sorry, we are going to resolve the issue as soon as possible";
+        if ($e->getCode() >= 400 && $e->getCode() < 500) {
+          http_response_code((int) $e->getCode());
+          header('Content-Type: application/json');
+          $response['result'] = $e->getMessage();
+          $response['status'] = $e->getCode();
+          require_once(__DIR__ ."//..//models//logs.model.php");
+          $exception = new Logs_model($e->getMessage()." ".(string) $e->getFile(), 'exception');
+          $last_log_message = $exception->logException();
+          unset($exception);
+          echo json_encode($response);
         } else {
-          http_response_code($exceptionCode);
-          header("Content-Type: text/plain");
-          echo $e->getMessage();
+          http_response_code(500);
+          header('Content-Type: application/json');
+          $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
+          $response['status'] = 500;
+          require_once(__DIR__ ."//..//models//logs.model.php");
+          $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
+          $last_log_message = $exception->logException();
+          unset($exception);
+          echo json_encode($response);
         }
       } 
   }
@@ -122,22 +122,28 @@ class Dog {
         throw new Exception('bad request', 401);
       }
     } catch (Exception $e) {
-      require_once(__DIR__ ."//..//models//logs.model.php");
-      $exception = new Logs_model($e->getMessage(), 'exception');
-      $last_log_message = $exception->logException();
-      unset($exception);
-      $exceptionCode = $e->getCode();
-      if ($exceptionCode >= 500) {
+      if ($e->getCode() >= 400 && $e->getCode() < 500) {
+        http_response_code((int) $e->getCode());
+        header('Content-Type: application/json');
+        $response['result'] = $e->getMessage();
+        $response['status'] = $e->getCode();
+        require_once(__DIR__ ."//..//models//logs.model.php");
+        $exception = new Logs_model($e->getMessage()." ".(string) $e->getFile(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
+        echo json_encode($response);
+      } else {
         http_response_code(500);
-        header("Content-Type: text/plain");
-        echo "Error 500: We are sorry, we are going to resolve the issue as soon as possible";
-      } else if ($exceptionCode >= 400 && $exceptionCode < 500) {
-        http_response_code(401);
-        header("Content-Type: text/plain");
-        echo "Requested file must be specified";
+        header('Content-Type: application/json');
+        $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
+        $response['status'] = 500;
+        require_once(__DIR__ ."//..//models//logs.model.php");
+        $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
+        echo json_encode($response);
       }
     }
   }
-
 }
 
