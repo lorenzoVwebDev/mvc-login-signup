@@ -15,4 +15,9 @@
             <location>//..//storage//xml//tasks.xml</location>
         </type>
     </application>
+        <application>
+        <type ID='users_json_storage'>
+            <location>//..//storage//json//users.json</location>
+        </type>
+    </application>
 </applications>

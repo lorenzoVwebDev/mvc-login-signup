@@ -131,4 +131,14 @@ class Model {
         throw new Exception('task.entity.php not found', 500);
       }
   }
+
+  function authentication($type, array $credentials) {
+    if ($type === 'sign-in') {
+      if (file_exists(__DIR__."//..//models//signin_json.model.php")) {
+        require_once(__DIR__."//..//models//signin_json.model.php"); 
+
+        
+      }
+    }
+  }
 }
