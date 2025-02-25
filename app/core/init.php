@@ -2,7 +2,7 @@
 //capitalized files are classes
 require 'config.php';
 require 'functions.php';
-require 'Jwt.php';
+require 'Jasonwebtoken.php';
 require 'Database.php';
 require 'Model.php';
 require 'Container.php';

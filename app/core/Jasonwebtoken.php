@@ -48,22 +48,23 @@ trait Jasonwebtoken {
   }
 
   public function requireAuth() {
-    $headers = getallheaders();
-    if (!isset($headers['Authorization'])&&!isset($_COOKIE['jwtRefresh'])) {
+/*     $headers = getallheaders();
+    if (!isset($headers['Authorization'])) {
       http_response_code(401);
       echo json_encode(['error' => 'unauthorized']);
       $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $_SESSION['URL'] = $URL;
-      header('Location: '.ROOT."public/");
       exit;
-    }
-    $decoded = false;
-    if (isset( $headers['Authorization'])) {
+    } */
+
+    if (isset($headers['Authorization'])) {
+
       $token = str_replace("Bearer ", '', $headers['Authorization']);
       $decoded = $this->verifyAccessToken($token);
     }
 
-    if (!$decoded) {
+    if (!isset($decoded)) {
+/*       echo 'works'; */
       $refreshToken = $_COOKIE['jwtRefresh'] ?? null;
 
       if (!$refreshToken) {
@@ -71,7 +72,6 @@ trait Jasonwebtoken {
         echo json_encode(['error' => 'missing refresh token']);
         $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $_SESSION['URL'] = $URL;
-        header('Location: '.ROOT."public/");
         exit;
     }
 
@@ -111,7 +111,6 @@ trait Jasonwebtoken {
         echo json_encode(['error' => 'missing refresh token']);
         $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $_SESSION['URL'] = $URL;
-        header('Location: '.ROOT."//public//");
         exit;
       }
 
@@ -120,7 +119,6 @@ trait Jasonwebtoken {
       if (!$refreshDecoded) {
         http_response_code(401);
         echo json_encode(['error' => 'refresh is expired']);
-        header('Location: '.ROOT."//public//");
         exit;
       }
 
@@ -134,9 +132,10 @@ trait Jasonwebtoken {
       ], $this->accessKey, $this->algorithm);
 
       header('Content-Type: application/json');
-      echo json_encode(['access_token' => $accessToken]);
+
       $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $_SESSION['URL'] = $URL;
+      return $accessToken;
     }
     }
   }

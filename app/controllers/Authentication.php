@@ -2,6 +2,10 @@
 
 class Authentication extends Controller {
 
+  public function authentication($name) {
+    $this->view($name);
+  } 
+
   public function signin() {
     try {
       if (isset($_POST['authentication'])) {
