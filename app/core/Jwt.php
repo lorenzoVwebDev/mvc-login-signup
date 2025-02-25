@@ -49,15 +49,19 @@ trait Jasonwebtoken {
 
   public function requireAuth() {
     $headers = getallheaders();
-    if (!isset($headers['Authorization'])) {
+    if (!isset($headers['Authorization'])&&!isset($_COOKIE['jwtRefresh'])) {
       http_response_code(401);
       echo json_encode(['error' => 'unauthorized']);
+      $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $_SESSION['URL'] = $URL;
       header('Location: '.ROOT."public/");
       exit;
     }
-
-    $token = str_replace("Bearer ", '', $headers['Authorization']);
-    $decoded = $this->verifyAccessToken($token);
+    $decoded = false;
+    if (isset( $headers['Authorization'])) {
+      $token = str_replace("Bearer ", '', $headers['Authorization']);
+      $decoded = $this->verifyAccessToken($token);
+    }
 
     if (!$decoded) {
       $refreshToken = $_COOKIE['jwtRefresh'] ?? null;
@@ -65,6 +69,8 @@ trait Jasonwebtoken {
       if (!$refreshToken) {
         http_response_code(401);
         echo json_encode(['error' => 'missing refresh token']);
+        $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $_SESSION['URL'] = $URL;
         header('Location: '.ROOT."public/");
         exit;
     }
@@ -103,6 +109,8 @@ trait Jasonwebtoken {
       if (!$refreshTokenBool) {
         http_response_code(401);
         echo json_encode(['error' => 'missing refresh token']);
+        $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $_SESSION['URL'] = $URL;
         header('Location: '.ROOT."//public//");
         exit;
       }
@@ -127,20 +135,11 @@ trait Jasonwebtoken {
 
       header('Content-Type: application/json');
       echo json_encode(['access_token' => $accessToken]);
-      $URL = $_GET['url'];
+      $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+      $_SESSION['URL'] = $URL;
     }
     }
   }
 }
 
-
-/* $token = $_SERVER['HTTP_AUTHORIZATION'] ?? ''; // Get token from request
-
-$decodedToken = $auth->verifyToken($token);
-
-if ($decodedToken) {
-    echo "Valid token. User ID: " . $decodedToken->sub;
-} else {
-    echo "Invalid or expired token!";
-} */
 

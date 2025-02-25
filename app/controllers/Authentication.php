@@ -16,11 +16,20 @@ class Authentication extends Controller {
           $model = new Model();
           $tokens = $model->authentication($type, $credentials);
           if (array_key_exists('access_token', $tokens) && array_key_exists('refresh_token', $tokens)) {
-            $token['access_token'] = $tokens['access_token'];
-            http_response_code(200);
-            header('Content-Type: application/json');
-            setcookie('jwtRefresh', $tokens['refresh_token'], time()+604800, '/', '', false, false);
-            echo json_encode($token);
+            if (isset($_SESSION['URL'])) {
+              $response['access_token'] = $tokens['access_token'];
+              $response['requested-url'] = $_SESSION['URL'];
+              http_response_code(200);
+              header('Content-Type: application/json');
+              setcookie('jwtRefresh', $tokens['refresh_token'], time()+604800, '/', '', false, false);
+              echo json_encode($response);
+            } else {
+              $token['access_token'] = $tokens['access_token'];
+              http_response_code(200);
+              header('Content-Type: application/json');
+              setcookie('jwtRefresh', $tokens['refresh_token'], time()+604800, '/', '', false, false);
+              echo json_encode($token);
+            }
           } else {
             throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');
           }

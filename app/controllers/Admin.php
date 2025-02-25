@@ -1,7 +1,7 @@
 <?php
 class Admin extends Controller {
   use Jasonwebtoken;
-
+  
   public function dashboard($name) {
     $this->view($name);
   } 
