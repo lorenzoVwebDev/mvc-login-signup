@@ -5,24 +5,24 @@ import { renderProject } from './view/pagerendering/dashboard.view.js';
 //global variables
 import { url } from './utils/globalVariables.js'
 
-document.getElementById('sign-in-form').addEventListener('submit', async (event) => {
-  event.preventDefault();
+window.addEventListener('load', () => {
+  if (document.cookie
+  .split("; ")
+  .find((row) => row.startsWith("jwtRefresh="))) {
+    window.location.href = url
+  }
 
-  const form = new FormData(event.target);
-  const responseObject = await signIn(form, url);
-  const {htmlResult, webPageResponse} = responseObject;
-  renderProject(htmlResult);
-})
+  document.getElementById('sign-in-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-/* const token = "your-jwt-token-here"; // Replace with a real token
-
-fetch("http://your-backend.com/api/verify-token.php", {
-    method: "GET",
-    headers: {
-        "Authorization": `Bearer ${token}`,
-        "Content-Type": "application/json"
+    const form = new FormData(event.target);
+    const responseObject = await signIn(form, url);
+    const {htmlResult, webPageResponse} = responseObject;
+    const state = {
+      htmlResult
     }
+    history.pushState(state.htmlResult, '', url+'dashboard/');
+    renderProject();
+  })
 })
-.then(response => response.text()) // Assuming PHP returns plain text
-.then(data => console.log("Server Response:", data))
-.catch(error => console.error("Error:", error)); */
+

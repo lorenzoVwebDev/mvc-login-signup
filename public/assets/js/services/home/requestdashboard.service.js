@@ -8,7 +8,7 @@ export async function requestDashboard(accessToken, url) {
 
      if (webPageResponse.status >= 200 && webPageResponse.status < 400) {
       const htmlResult = await webPageResponse.text();
-      console.log(htmlResult)
+
       return {
         htmlResult,
         webPageResponse

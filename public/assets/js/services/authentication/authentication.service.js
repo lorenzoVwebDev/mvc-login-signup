@@ -15,7 +15,11 @@ export async function signIn(form, url) {
        });
 
        if (response.status >= 200 && response.status < 400) {
-        const htmlResult = await webPageResponse.text();
+        console.log(result['requested-url'])
+        const result2 = await webPageResponse.json();
+
+
+        const htmlResult = result2.html
 
         return {
           htmlResult,

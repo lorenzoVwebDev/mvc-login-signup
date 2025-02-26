@@ -13,8 +13,8 @@ let Headers = `
             <li><button id="dashboard-link" class="nav-link px-2 text-white">Admin Dashboard</button></li>
           </ul>
 
-          <div class="text-end">
-            <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <div class="text-end" id="left-side-header">
+            <button type="button" class="btn btn-outline-light me-2"><a href="${url}authentication/authentication/signin">Login</a></button>
             <button type="button" class="btn btn-warning">Sign-up</button>
           </div>
         </div>

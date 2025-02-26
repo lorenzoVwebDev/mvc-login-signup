@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MVC-dog-application</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/headers/">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-  <link href="<?=ROOT?>public/assets/bootstrap.assets/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="<?=ROOT?>public/assets/css/dashboard.css"/>
-  <link rel="stylesheet" href="<?=ROOT?>public/assets/css/common.css"/>
 
-    <style>
+<style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -30,9 +17,7 @@
             padding: 20px;
         }
     </style>
-</head>
-<body>
-
+<script src="<?= ROOT?>public/assets/js/dashboard.js" ></script>
 <div class="d-flex">
     <nav class="sidebar p-3">
         <h4 class="text-white">Dashboard</h4>
@@ -90,9 +75,3 @@
         </div>
     </div>
 </div>
-
-  <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
-  <script src="<?= ROOT?>public/assets/js/dashboard.js" type="module"></script>
-</body>
-</html>

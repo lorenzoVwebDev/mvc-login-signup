@@ -1,5 +1,5 @@
-export function  renderProject(html) {
-  document.open();
-  document.write(html);
-  document.close();
+export function  renderProject() {
+  document.querySelector('.main-section').innerHTML = '';
+  const newHtml = history.state;
+  document.querySelector('.main-section').innerHTML = newHtml;
 } 
