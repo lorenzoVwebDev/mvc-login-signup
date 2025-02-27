@@ -8,7 +8,7 @@ class Controller {
     //ucfirst is used to capitalize the firs letter of a string
     $filename = "../app/views/".$name.".view.php";
     if (file_exists($filename)) {
-      if (($name ==='home') || ($name ==='signin') ) {
+      if (($name ==='home') || ($name ==='signin') || ($name === 'signup')) {
         require($filename);
       } else {  
         $accessToken = $this->requireAuth();

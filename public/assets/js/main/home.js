@@ -1,9 +1,9 @@
 //services
-import { requestDashboard } from './services/home/requestdashboard.service.js'
+import { requestDashboard } from '../services/home/requestdashboard.service.js'
 //views
-import { renderProject } from './view/pagerendering/dashboard.view.js';
+import { renderProject } from '../view/pagerendering/dashboard.view.js';
 //global variables
-import { url, accessToken } from './utils/globalVariables.js'
+import { url, accessToken } from '../utils/globalVariables.js'
 
 window.addEventListener('load', () => {
   addPopState()

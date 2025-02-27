@@ -1,13 +1,13 @@
-import { downloadLogFile } from './services/dashboard/download.logfile.js';
-import { deleteLog } from './services/dashboard/deleteLog.logfile.js';
-import { logEvent } from './services/dashboard/logevent.logfile.js';
-import { downloadTable } from './services/dashboard/download.table.js'; 
-import { submitMail } from './services/dashboard/submit.mailform.js'
-import { appendButtons, appendDelete } from './view/dashboard/appendelement.view.js';
-import { createTableAndMail } from "./view/dashboard/table.view.js";
-import { renderResponse } from './view/dashboard/mailresponse.view.js'
-import { downloadLogFileView } from './view/dashboard/downloadlog.view.js'
-import { url } from './utils/globalVariables.js'
+import { downloadLogFile } from '../services/dashboard/download.logfile.js';
+import { deleteLog } from '../services/dashboard/deleteLog.logfile.js';
+import { logEvent } from '../services/dashboard/logevent.logfile.js';
+import { downloadTable } from '../services/dashboard/download.table.js'; 
+import { submitMail } from '../services/dashboard/submit.mailform.js'
+import { appendButtons, appendDelete } from '../view/dashboard/appendelement.view.js';
+import { createTableAndMail } from "../view/dashboard/table.view.js";
+import { renderResponse } from '../view/dashboard/mailresponse.view.js'
+import { downloadLogFileView } from '../view/dashboard/downloadlog.view.js'
+import { url } from '../utils/globalVariables.js'
 
 if (document.getElementById('mail-form')) {
   document.getElementById('mail-form').addEventListener('submit', async event => {

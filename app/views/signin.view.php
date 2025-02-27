@@ -21,30 +21,33 @@
 
   <section class="main-section">
     <main class="form-signin w-100 m-auto">
-    <form id="sign-in-form">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <form id="sign-in-form">
+        <div>
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-      <div class="form-floating">
-        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" pattern="^(?=.{8,}$)([a-zA-Z0-9._-]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$
-" form="sign-in-form" value="lorenzo" name="username" required>
-        <label for="floatingInput">Email address</label>
-      </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Domenica@47" name="password" form="sign-in-form" required>
-        <label for="floatingPassword">Password</label>
-      </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" pattern="^(?=.{8,}$)([a-zA-Z0-9._-]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$
+  " form="sign-in-form" value="lorenzo" name="username" required>
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Domenica@47" name="password" form="sign-in-form" required>
+          <label for="floatingPassword">Password</label>
+        </div>
 
-      <div class="form-check text-start my-3">
-        <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" form="sign-in-form">
-        <label class="form-check-label" for="flexCheckDefault">
-          Remember me
-        </label>
-      </div>
-      <input type='hidden' name='authentication' value="sign-in">
-      <button class="btn btn-primary w-100 py-2" type="submit" form="sign-in-form" id="signinsubmit-button">Sign in</button>
-      <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
-    </form>
-  </main>
+        <div class="form-check text-start my-3">
+          <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault" form="sign-in-form">
+          <label class="form-check-label" for="flexCheckDefault">
+            Remember me
+          </label>
+        </div>
+        <input type='hidden' name='authentication' value="sign-in">
+        <button class="btn btn-primary w-100 py-2" type="submit" form="sign-in-form" id="signinsubmit-button">Sign in</button>
+        <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
+        </div>
+      </form>
+      <a href="<?=ROOT?>public/authentication/authentication/signup">Sign Up</a>
+    </main>
 
   </section>
 
@@ -56,7 +59,7 @@
 
   <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
-  <script src="<?= ROOT?>public/assets/js/signin.js" type="module"></script>
+  <script src="<?= ROOT?>public/assets/js/main/main.authentication/signin.js" type="module"></script>
   <script>
   </script>
 </body>

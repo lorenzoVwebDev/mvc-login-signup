@@ -9,7 +9,7 @@ trait Jasonwebtoken {
   private string $refreshKey = JWT_REFRESH_KEY;
   private string $algorithm = 'HS256';
   private int $accessTokenExpire = 3600;
-  private int $refreshTokenExpire = 604800;
+  private int $refreshTokenExpire = 86000;
 
   public function generateTokens(string $username): array {
     $issuedAt = time();
@@ -48,14 +48,6 @@ trait Jasonwebtoken {
   }
 
   public function requireAuth() {
-/*     $headers = getallheaders();
-    if (!isset($headers['Authorization'])) {
-      http_response_code(401);
-      echo json_encode(['error' => 'unauthorized']);
-      $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-      $_SESSION['URL'] = $URL;
-      exit;
-    } */
 
     if (isset($headers['Authorization'])) {
 
@@ -64,7 +56,6 @@ trait Jasonwebtoken {
     }
 
     if (!isset($decoded)) {
-/*       echo 'works'; */
       $refreshToken = $_COOKIE['jwtRefresh'] ?? null;
 
       if (!$refreshToken) {

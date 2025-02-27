@@ -41,3 +41,33 @@ export async function signIn(form, url) {
     }
   }
 }
+
+export async function signUp(form, url) {
+  const response = await fetch(`${url}authentication/signup`, {
+    method: "POST",
+    body: form,
+  })
+
+  if (response.status >= 200 && response.status < 400) {
+    const result = await response.json()
+
+    return {
+      result,
+      response
+    }
+  } else if (response.status >= 400 && response.status < 500) {
+    const result = await response.json()
+
+    return {
+      result,
+      response
+    }
+  } else if (response.status >= 500) {
+    const result = await response.json()
+
+    return {
+      result,
+      response
+    }
+  }
+}
