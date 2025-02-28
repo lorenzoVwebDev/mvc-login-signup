@@ -49,12 +49,16 @@ trait Jasonwebtoken {
 
   public function requireAuth() {
 
-    if (isset($headers['Authorization'])) {
+    if (isset($headers['Authorization'])||isset($_SESSION['access_token'])||isset($_COOKIE['jwtRefresh'])) {
+      if (isset($headers['Authorization'])) {
+        $token = str_replace("Bearer ", '', $headers['Authorization']);
+      } else if (isset($_SESSION['access_token'])) {
+        $token = $_SESSION['access_token'];
+      }
 
-      $token = str_replace("Bearer ", '', $headers['Authorization']);
       $decoded = $this->verifyAccessToken($token);
     }
-
+    
     if (!isset($decoded)) {
       $refreshToken = $_COOKIE['jwtRefresh'] ?? null;
 
@@ -122,14 +126,15 @@ trait Jasonwebtoken {
         'sub' => $username
       ], $this->accessKey, $this->algorithm);
 
-      header('Content-Type: application/json');
-
       $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $_SESSION['URL'] = $URL;
-      return $accessToken;
+      setcookie('jwtAccess', $accessToken, time()+10, '/', '', false, false);
+      return true;
     }
-    }
+  } else {
+    return true;
   }
+ }
 }
 
 

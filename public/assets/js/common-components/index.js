@@ -8,4 +8,11 @@ document.querySelector('.git-header-section').innerHTML = GitRepositoryHeader;
 document.querySelector('.main-header').innerHTML = Header;
 document.querySelector('.modal-container').innerHTML = Modal;
 document.querySelector('.footer-section').innerHTML = Footer;
-/* document.querySelector('.edit-modal-container').innerHTML = EditModal; */
+
+if (document.cookie.split("; ").find(element => {
+  return element.includes("jwtRefresh")
+}) || sessionStorage.getItem('access_token')) {
+  document.getElementById('left-side-header').style.display = 'none';
+} else {
+  document.getElementById('left-side-header').style.display = 'block';
+}

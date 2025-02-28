@@ -17,7 +17,7 @@
             padding: 20px;
         }
     </style>
-<script src="<?= ROOT?>public/assets/js/dashboard.js" ></script>
+<script src="<?= ROOT?>public/assets/js/main/dashboard.js" ></script>
 <div class="d-flex">
     <nav class="sidebar p-3">
         <h4 class="text-white">Dashboard</h4>

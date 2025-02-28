@@ -21,24 +21,26 @@ class Authentication extends Controller {
           $tokens = $model->authentication($type, $credentials);
           if (array_key_exists('access_token', $tokens) && array_key_exists('refresh_token', $tokens)) {
             if (isset($_SESSION['URL'])) {
+              $_SESSION['access_token'] = $tokens['access_token'];
               $response['access_token'] = $tokens['access_token'];
               $response['requested-url'] = $_SESSION['URL'];
               http_response_code(200);
               header('Content-Type: application/json');
-              setcookie('jwtRefresh', $tokens['refresh_token'], time()+604800, '/', '', false, false);
+              setcookie('jwtRefresh', $tokens['refresh_token'], time()+86400, '/', '', false, false);
               echo json_encode($response);
             } else {
+              $_SESSION['access_token'] = $tokens['access_token'];
               $token['access_token'] = $tokens['access_token'];
               http_response_code(200);
               header('Content-Type: application/json');
-              setcookie('jwtRefresh', $tokens['refresh_token'], time()+604800, '/', '', false, false);
+              setcookie('jwtRefresh', $tokens['refresh_token'], time()+86400, '/', '', false, false);
               echo json_encode($token);
             }
           } else {
             throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');
           }
         } else {
-          throw new Exception('Missing credential/s', 401);
+          throw new Exception('Missing credential\'s', 401);
         }
       } else {
         throw new Exception('wrong request', 400);
@@ -57,7 +59,7 @@ class Authentication extends Controller {
       } else {
         http_response_code(500);
         header('Content-Type: application/json');
-        $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
+        $response['result'] = 'Error 500, we are sorry! We are goin to fix that as soon as possible';
         $response['status'] = 500;
 /*         echo json_encode($response); */
         require_once(__DIR__ ."//..//models//logs.model.php");
