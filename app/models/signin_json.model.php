@@ -26,9 +26,10 @@ class Signin_json {
           $this->users_data_json = $xmlLocation->item(0)->nodeValue;
         }
       }
-
-      $jsonFile = file_get_contents(__DIR__.$this->users_data_json);
-      $this->users_array = json_decode($jsonFile, true);
+      if (file_exists(__DIR__.$this->users_data_json)) {
+        $jsonFile = file_get_contents(__DIR__.$this->users_data_json);
+        $this->users_array = json_decode($jsonFile, true);
+      }
     } else {
       throw new Exception('applications.xml file not found', 500);
     }
@@ -51,10 +52,8 @@ class Signin_json {
   function userValidation() {
     foreach ($this->users_array as &$user) {
       if ($user['username'] === $this->user_signin) {
-
-        $currenttime = strtotime(date('mdy'));
-        $stamptime = strtotime($user['datestamp']);
-        
+        $currenttime = strtotime("now");
+        $stamptime = $user['datestamp'];
         if ($currenttime>$stamptime) {
             
             $_SESSION['message'] = "changepassword";
@@ -63,30 +62,37 @@ class Signin_json {
         } 
          
 
-        if (($user['attempts'] <= 3) || (date('mdYhis', strtotime('-5 minutes'))>=$user['lastattempt'])) {
+        if (($user['attempts'] < 3) || (strtotime('-5 minutes')>=$user['lastattempt'])) {
           $hash = $user['password'];
-  
-          if (in_array($this->user_signin, $user)&&(password_verify($this->password_signin, $hash))) {
+          if ((password_verify($this->password_signin, $hash))) {
             $_SESSION['username'] = $this->user_signin;
             $_SESSION['password'] = $this->password_signin;
-            $user['validattempt'] = strtotime(date('mdy'));
-            $user['lastattempt'] = strtotime(date('mdy'));
+            $user['validattempt'] = $currenttime;
+            $user['lastattempt'] = $currenttime;
             $user['attempts'] = 0;
             $tokens = $this->generateTokens($_SESSION['username']); 
             $this->refreshToken = $tokens['refresh_token'];
             return $tokens;
           } else {
-            $user['lastattempt'] = strtotime(date('mdy'));
-            if ((date('mdYhis', strtotime('-5 minutes'))>=$user['lastattempt'])) {
+            $user['lastattempt'] = $currenttime;
+            if (strtotime('-5 minutes')>=$user['lastattempt']) {
               $user['attempts'] = 1;
-            } else {
-              $user['attempts'] .= 1;
+            } else if ($user['attempts'] < 3) {
+              $user['attempts'] += 1;
             }
           }
+        } else {
+          $_SESSION['message'] = "passed";
+
+          return false;
         }
       }
     }
 
-    throw new Exception('Username or Password are wrong', 401);
+    
+
+    $_SESSION['message'] = "invalid";
+
+    return false;
   }
 }

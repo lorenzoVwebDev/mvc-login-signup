@@ -151,8 +151,14 @@ class Model {
           return array (
             'message' => $_SESSION['message']
           );
+        } else if ($tokens === false && $_SESSION['message'] === "invalid") {
+          unset($signinInstance);
+          throw new Exception('Username or Password are wrong', 401);
+        } else if ($tokens === false && $_SESSION['message'] === "passed") {
+          unset($signinInstance);
+          throw new Exception('Too Many Attempts', 429 );
         }
-      }
+      } 
     }
   }
 }
