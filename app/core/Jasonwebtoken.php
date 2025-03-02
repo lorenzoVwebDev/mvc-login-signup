@@ -64,7 +64,7 @@ trait Jasonwebtoken {
 
       if (!$refreshToken) {
         http_response_code(401);
-        echo json_encode(['error' => 'missing refresh token']);
+        header('Location: '.ROOT."public/admin/view/signin");
         $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $_SESSION['URL'] = $URL;
         exit;
@@ -87,6 +87,8 @@ trait Jasonwebtoken {
 
       if (!file_exists(__DIR__.$users_data_json)) {
         throw new Exception('user.json is missing', 500);
+        http_response_code(500);
+        header('Location: '.ROOT."public/admin/view/500");
       } 
 
       $jsonFile = file_get_contents(__DIR__.$users_data_json);
@@ -103,7 +105,7 @@ trait Jasonwebtoken {
 
       if (!$refreshTokenBool) {
         http_response_code(401);
-        echo json_encode(['error' => 'missing refresh token']);
+        header('Location: '.ROOT."public/admin/view/signin");
         $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $_SESSION['URL'] = $URL;
         exit;
@@ -113,12 +115,12 @@ trait Jasonwebtoken {
       
       if (!$refreshDecoded) {
         http_response_code(401);
-        echo json_encode(['error' => 'refresh is expired']);
+        header('Location: '.ROOT."public/admin/view/signin");
         exit;
       }
 
       $issuedAt = time();
-
+      echo 'hello madame';
       $accessToken = JWT::encode([
         'iss' => ROOT,
         'iat' => $issuedAt,

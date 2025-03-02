@@ -28,6 +28,4 @@ export async function fetchDashboard(url) {
       response
     }
   }
-
-
 }

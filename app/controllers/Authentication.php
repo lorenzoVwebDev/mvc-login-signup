@@ -21,23 +21,23 @@ class Authentication extends Controller {
           $tokens = $model->authentication($type, $credentials);
           if (array_key_exists('access_token', $tokens) && array_key_exists('refresh_token', $tokens)) {
             if (isset($_SESSION['URL'])) {
-              $_SESSION['access_token'] = $tokens['access_token'];
+/*               $_SESSION['access_token'] = $tokens['access_token'];
               $response['access_token'] = $tokens['access_token'];
               $response['requested-url'] = $_SESSION['URL'];
               http_response_code(200);
               header('Content-Type: application/json');
               setcookie('jwtRefresh', $tokens['refresh_token'], time()+86400, '/', '', false, false);
-              echo json_encode($response);
+              echo json_encode($response); */
             } else {
-              $_SESSION['access_token'] = $tokens['access_token'];
+/*               $_SESSION['access_token'] = $tokens['access_token'];
               $token['access_token'] = $tokens['access_token'];
               http_response_code(200);
               header('Content-Type: application/json');
               setcookie('jwtRefresh', $tokens['refresh_token'], time()+86400, '/', '', false, false);
-              echo json_encode($token);
+              echo json_encode($token); */
             }
-          } else {
-            throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');
+          } else if (array_key_exists('message', $tokens) && $tokens['message'] === 'changepassword') {
+            $this->view('changepassword');
           }
         } else {
           throw new Exception('Missing credential\'s', 401);

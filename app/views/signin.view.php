@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +28,7 @@
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Domenica@47" name="password" form="sign-in-form" required>
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Domenica@4" name="password" form="sign-in-form" required>
           <label for="floatingPassword">Password</label>
         </div>
 

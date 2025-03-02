@@ -35,11 +35,13 @@ class Signin_json {
   }
 
   function __destruct() {
-    foreach ($this->users_array as &$user) {
-      if ($user['username'] === $this->user_signin) {
-        $user['refresh-token'] = $this->refreshToken;
-        break;
-      } 
+    if ($this->refreshToken != '') {
+      foreach ($this->users_array as &$user) {
+        if ($user['username'] === $this->user_signin) {
+          $user['refresh-token'] = $this->refreshToken;
+          break;
+        } 
+      }
     }
 
     $encodedJson = json_encode($this->users_array);
@@ -47,16 +49,41 @@ class Signin_json {
   }
 
   function userValidation() {
-    foreach ($this->users_array as $user) {
-      $hash = $user['password'];
+    foreach ($this->users_array as &$user) {
+      if ($user['username'] === $this->user_signin) {
 
-      if (in_array($this->user_signin, $user)&&(password_verify($this->password_signin, $hash))) {
-        $_SESSION['username'] = $this->user_signin;
-        $_SESSION['password'] =$this->password_signin;
+        $currenttime = strtotime(date('mdy'));
+        $stamptime = strtotime($user['datestamp']);
         
-        $tokens = $this->generateTokens($_SESSION['username']); 
-        $this->refreshToken = $tokens['refresh_token'];
-        return $tokens;
+        if ($currenttime>$stamptime) {
+            
+            $_SESSION['message'] = "changepassword";
+
+            return false;
+        } 
+         
+
+        if (($user['attempts'] <= 3) || (date('mdYhis', strtotime('-5 minutes'))>=$user['lastattempt'])) {
+          $hash = $user['password'];
+  
+          if (in_array($this->user_signin, $user)&&(password_verify($this->password_signin, $hash))) {
+            $_SESSION['username'] = $this->user_signin;
+            $_SESSION['password'] = $this->password_signin;
+            $user['validattempt'] = strtotime(date('mdy'));
+            $user['lastattempt'] = strtotime(date('mdy'));
+            $user['attempts'] = 0;
+            $tokens = $this->generateTokens($_SESSION['username']); 
+            $this->refreshToken = $tokens['refresh_token'];
+            return $tokens;
+          } else {
+            $user['lastattempt'] = strtotime(date('mdy'));
+            if ((date('mdYhis', strtotime('-5 minutes'))>=$user['lastattempt'])) {
+              $user['attempts'] = 1;
+            } else {
+              $user['attempts'] .= 1;
+            }
+          }
+        }
       }
     }
 

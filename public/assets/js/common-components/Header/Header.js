@@ -10,7 +10,7 @@ let Headers = `
           
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="${url}" class="nav-link px-2 text-white">Home</a></li>
-            <li><button id="dashboard-link" class="nav-link px-2 text-white">Admin Dashboard</button></li>
+            <li><a href="${url}authentication/view/dashboard" class="nav-link px-2 text-white">Admin Dashboard</a></li>
           </ul>
 
           <div class="text-end" id="left-side-header">
