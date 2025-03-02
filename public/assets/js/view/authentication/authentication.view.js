@@ -1,6 +1,5 @@
 export function signInView(result, response, url, event) {
   if (response.status >= 200 && response.status < 400) {
-    sessionStorage.setItem('access_token', result['access_token']);
     window.location.href = url;
   } else if (response.status >= 400 && response.status < 500) {
     event.target.children[0].children[0].remove()

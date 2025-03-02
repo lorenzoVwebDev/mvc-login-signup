@@ -52,11 +52,11 @@ trait Jasonwebtoken {
     if (isset($headers['Authorization'])||isset($_SESSION['access_token'])||isset($_COOKIE['jwtRefresh'])) {
       if (isset($headers['Authorization'])) {
         $token = str_replace("Bearer ", '', $headers['Authorization']);
+        $decoded = $this->verifyAccessToken($token);
       } else if (isset($_SESSION['access_token'])) {
         $token = $_SESSION['access_token'];
+        $decoded = $this->verifyAccessToken($token);
       }
-
-      $decoded = $this->verifyAccessToken($token);
     }
     
     if (!isset($decoded)) {
@@ -120,7 +120,7 @@ trait Jasonwebtoken {
       }
 
       $issuedAt = time();
-      echo 'hello madame';
+
       $accessToken = JWT::encode([
         'iss' => ROOT,
         'iat' => $issuedAt,
@@ -130,7 +130,7 @@ trait Jasonwebtoken {
 
       $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $_SESSION['URL'] = $URL;
-      setcookie('jwtAccess', $accessToken, time()+10, '/', '', false, false);
+      $_SESSION['access_token'] = $accessToken;
       return true;
     }
   } else {

@@ -15,11 +15,6 @@ export async function fetchDashboard(url) {
     }
   } else {
     const response = await fetch(`${url}admin/view/dashboard`);
-    const accessToken = document.cookie.split("; ").find(element => {
-      return element.includes("jwtAccess")
-    }).replace('jwtAccess=', '');
-
-    sessionStorage.setItem('access_token', accessToken);
 
     const result = await response.text();
 
