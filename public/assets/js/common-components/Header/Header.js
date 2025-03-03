@@ -15,7 +15,10 @@ let Headers = `
 
           <div class="text-end" id="left-side-header">
             <button type="button" class="btn btn-outline-light me-2"><a href="${url}authentication/authentication/signin">Login</a></button>
-            <button type="button" class="btn btn-warning">Sign-up</button>
+            <button type="button" class="btn btn-warning"><a href="${url}authentication/authentication/signup">Sign-up</a</button>
+          </div>
+          <div id="left-side-header-log-out">
+            <button type="button" class="btn btn-warning">Log Out</button>
           </div>
         </div>
       </div>

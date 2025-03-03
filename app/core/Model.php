@@ -164,6 +164,14 @@ class Model {
         require_once(__DIR__."//..//models//signup_json.model.php");
         
         $signUpInstance = new Signup_json($credentials);
+        $userCreated = $signUpInstance->userCreation();
+        if (isset($userCreated)) {
+          if ($userCreated) {
+            return $_SESSION['message'];
+          } else {
+            return $_SESSION['message'];
+          }
+        }
       }
     }
   }

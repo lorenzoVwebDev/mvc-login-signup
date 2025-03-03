@@ -13,8 +13,6 @@ class Signup_json {
     $this->email_signup = $credentials['email'];
     $this->password_signup = $credentials['password'];
 
-    show($this->password_signup);
-
     libxml_use_internal_errors(true);
     $xmlDoc = new DOMDocument();
     if (file_exists(__DIR__."//..//config//applications.xml")) {
@@ -41,11 +39,33 @@ class Signup_json {
   }
 
   function __destruct() {
-
     $encodedJson = json_encode($this->users_array);
     file_put_contents(__DIR__.$this->users_data_json, $encodedJson);
   }
 
   function userCreation() {
+    foreach ($this->users_array as &$user) {
+      if ($user['username'] === $this->user_signup) {
+        $_SESSION['message'] = 'existent-username';
+        return false;
+      } else if ($user['email'] === $this->email_signup) {
+        $_SESSION['message'] = 'existent-email';
+        return false;
+      }
+    }
+    $hash = password_hash($this->password_signup, PASSWORD_DEFAULT);
+
+    $newUser['username'] = $this->user_signup;
+    $newUser['email'] = $this->email_signup;
+    $newUser['password'] = $hash;
+    $newUser['datestamp'] = strtotime("now");
+    $newUser['attempts'] = 0;
+    $newUser['lastattempt'] = "";
+    $newUser['validattempt'] = "";
+
+    $this->users_array[] = $newUser;
+
+    return $_SESSION['message'] = 'user-created';
+    return true;
   }
 }

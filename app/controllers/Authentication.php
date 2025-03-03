@@ -85,6 +85,25 @@ class Authentication extends Controller {
   
           $model = new Model();
           $signedup = $model->authentication($type, $credentials);
+
+          if ($signedup === $_SESSION['message']) {
+            switch ($signedup) {
+              case 'user-created':
+                http_response_code(200);
+                $response['message'] = $signedup;
+                echo json_encode($response);
+                break;
+              case 'existent-email':
+                throw new Exception($signedup, 400);
+                break;
+              case 'existent-username':
+                throw new Exception($signedup, 400);
+                break;
+            } 
+
+          } else {
+            throw new Exception('Session message not set', 500);
+          }
           
         } else {
           throw new Exception('Missing sign-up credentials', 401);

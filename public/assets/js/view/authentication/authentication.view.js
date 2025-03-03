@@ -18,9 +18,20 @@ export function signInView(result, response, url, event) {
 
 export function signUpView(result, response, url, event) {
   if (response.status >= 200 && response.status < 400) {
-
+    const parent = event.target.parentElement
+    parent.innerHTML = "";
+    const h1 = document.createElement('h1');
+    h1.innerText = "Thank you so much for signing up! Check your email!";
+    parent.append(h1);
+    setTimeout(() => {
+      window.location.href = `${url}authentication/authentication/signin`
+    }, 4000)
   } else if (response.status >= 400 && response.status < 500) {
-
+    event.target.reset()
+    const h2 = document.createElement('h2');
+    h2.innerText = `Username exists yet`;
+    event.target.prepend(h2)
   } else if (response.status >= 500 ) {
+    console.dir(event.target)
   }
 }
