@@ -15,3 +15,12 @@ export function signInView(result, response, url, event) {
     logInForm.append(h1);
   }
 }
+
+export function signUpView(result, response, url, event) {
+  if (response.status >= 200 && response.status < 400) {
+
+  } else if (response.status >= 400 && response.status < 500) {
+
+  } else if (response.status >= 500 ) {
+  }
+}

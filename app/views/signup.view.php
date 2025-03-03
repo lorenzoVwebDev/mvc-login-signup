@@ -24,19 +24,20 @@
         </div>
 
         <div class="modal-body p-5 pt-0">
-          <form class="">
+          <form class="" id="sign-up-form">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username">
+              <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username" value="lorenzo2">
               <label for="floatingInput">Username</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control rounded-3" placeholder="name@example.com" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" name="email" required>
+              <input type="email" class="form-control rounded-3" placeholder="name@example.com" name="email" value="lorenzo.viganego@libero.it" required>
               <label for="floatingInput">email</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="password" required>
+              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="password" value="Opelastra@23" required>
               <label for="floatingPassword">Password</label>
             </div>
+            <input type="hidden" name="authentication" value="sign-up"/>
             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" id="signup-submit-button" type="submit">Sign up</button>
             <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
           </form>

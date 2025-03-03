@@ -159,6 +159,12 @@ class Model {
           throw new Exception('Too Many Attempts', 429 );
         }
       } 
+    } else if ($type === 'sign-up') {
+      if (file_exists(__DIR__."//..//models//signup_json.model.php")) {
+        require_once(__DIR__."//..//models//signup_json.model.php");
+        
+        $signUpInstance = new Signup_json($credentials);
+      }
     }
   }
 }

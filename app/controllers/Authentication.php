@@ -71,16 +71,26 @@ class Authentication extends Controller {
     }
   }
 
-  public function signUp() {
+  public function signup() {
     try {
-      if (isset($_POST['username'])||isset($_POST['password'])||isset($_POST['email'])) {
-        $username = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $email = filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        $password = filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-        
+      if (isset($_POST['authentication'])) {
+        if (isset($_POST['username'])||isset($_POST['password'])||isset($_POST['email'])) {
+          $credentials['username'] = filter_var($_POST['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $credentials['email'] = preg_match( '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) === 1 ? filter_var($_POST['email'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : false;
+          $credentials['password'] = preg_match( '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,}$/', filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS)) === 1 ? filter_var($_POST['password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : false;
+          $type = filter_var($_POST['authentication'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          if (in_array(false, $credentials)) {
+            throw new Exception('Invalid email or password', 401);
+          }
+  
+          $model = new Model();
+          $signedup = $model->authentication($type, $credentials);
+          
+        } else {
+          throw new Exception('Missing sign-up credentials', 401);
+        }
       } else {
-        throw new Exception('Missing sign-up credentials', 401);
+        throw new Exception('Missing authentication type', 400);
       }
     } catch (Exception $e) {
       if ($e->getCode() >= 400 && $e->getCode() < 500) {

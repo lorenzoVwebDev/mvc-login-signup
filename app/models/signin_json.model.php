@@ -51,7 +51,7 @@ class Signin_json {
 
   function userValidation() {
     foreach ($this->users_array as &$user) {
-      if ($user['username'] === $this->user_signin) {
+      if ($user['username'] === $this->user_signin || $user['email'] === $this->user_signin) {
         $currenttime = strtotime("now");
         $stamptime = $user['datestamp'];
         if ($currenttime>$stamptime) {
