@@ -130,6 +130,7 @@ trait Jasonwebtoken {
 
       $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $_SESSION['URL'] = $URL;
+      $_SESSION['username'] = $username;
       $_SESSION['access_token'] = $accessToken;
       return true;
     }

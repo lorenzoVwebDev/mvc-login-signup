@@ -1,6 +1,6 @@
 import { url } from '../../utils/globalVariables.js'
 
-let Headers = `
+let Headers =  `
       <header class="p-3 text-bg-dark">
       <div class="container">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -15,14 +15,14 @@ let Headers = `
 
           <div class="text-end" id="left-side-header">
             <button type="button" class="btn btn-outline-light me-2"><a href="${url}authentication/authentication/signin">Login</a></button>
-            <button type="button" class="btn btn-warning"><a href="${url}authentication/authentication/signup">Sign-up</a</button>
+            <button type="button" class="btn btn-warning"><a href="${url}authentication/authentication/signup">Sign-up</a></button>
           </div>
           <div id="left-side-header-log-out">
-            <button type="button" class="btn btn-warning">Log Out</button>
+            <button type="button" class="btn btn-warning" id="log-out-button">Log Out</button>
           </div>
         </div>
       </div>
     </header>
-`;
+`; 
 
 export default Headers;

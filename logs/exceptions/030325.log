@@ -15,3 +15,12 @@
 03.03.2025 03:31:07 | User Error | existent-email C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
 03.03.2025 03:35:16 | User Error | existent-username C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
 03.03.2025 03:40:28 | User Error | existent-username C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:12:46 | User Error | jwtRefresh cookie or access token not found C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:36:58 | User Error | jwtRefresh cookie or access token not found C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:38:25 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:38:38 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:38:52 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:39:20 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:39:43 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:39:53 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.03.2025 06:41:12 | User Error | jwtRefresh cookie or access token not deleted C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php

@@ -11,7 +11,7 @@ document.querySelector('.footer-section').innerHTML = Footer;
 
 if (document.cookie.split("; ").find(element => {
   return element.includes("jwtRefresh")
-}) || sessionStorage.getItem('access_token')) {
+})) {
   document.getElementById('left-side-header').style.display = 'none';
   document.getElementById('left-side-header-log-out').style.display = 'block';
 } else {

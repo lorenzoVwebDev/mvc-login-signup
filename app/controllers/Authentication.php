@@ -136,4 +136,50 @@ class Authentication extends Controller {
       }
     }
   }
+
+  public function logout($delete) {
+    try {
+      if ($delete === 'access'&&$_SERVER['REQUEST_METHOD'] === 'DELETE') {
+
+        if (isset($_COOKIE['jwtRefresh'])) {
+          setcookie("jwtRefresh", "", time() - 3600);
+        }
+    
+        if (isset($_SESSION['access_token'])) {
+          unset($_SESSION['access_token']);
+        }
+    
+        if (!(isset($_SESSION['access_token']))) {
+          http_response_code(200);
+          $response['message'] = "log out";
+          echo json_encode($response);
+        } else {
+          throw new Exception('jwtRefresh cookie or access token not deleted', 500);
+        }
+      }
+    } catch (Exception $e) {
+      if ($e->getCode() >= 400 && $e->getCode() < 500) {
+        http_response_code((int) $e->getCode());
+        header('Content-Type: application/json');
+        $response['result'] = $e->getMessage();
+        $response['status'] = $e->getCode();
+        require_once(__DIR__ ."//..//models//logs.model.php");
+        $exception = new Logs_model($e->getMessage()." ".(string) $e->getFile(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
+        echo json_encode($response);
+      } else {
+        http_response_code(500);
+        header('Content-Type: application/json');
+        $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
+        $response['status'] = 500;
+/*         echo json_encode($response); */
+        require_once(__DIR__ ."//..//models//logs.model.php");
+        $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
+        echo json_encode($response);
+      }
+    }
+  }
 }
