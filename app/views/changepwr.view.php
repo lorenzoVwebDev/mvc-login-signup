@@ -24,7 +24,7 @@
         </div>
 
         <div class="modal-body p-5 pt-0">
-          <form class="" id="sign-up-form">
+          <form class="" id="changepwr-form">
             <div class="form-floating mb-3">
               <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username" value="lorenzo2">
               <label for="floatingInput">Username</label>
@@ -42,7 +42,7 @@
               <label for="floatingPassword">Confirm New Password</label>
             </div>
             <input type="hidden" name="authentication" value="change-password"/>
-            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" id="signup-submit-button" type="submit">Change Password</button>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" id="changepwr-submit-button" type="submit">Change Password</button>
             <small class="text-body-secondary">By clicking on Change Password you agree to set a new password for your account</small>
           </form>
         </div>
@@ -59,7 +59,7 @@
 
   <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
-  <script src="<?= ROOT?>public/assets/js/main/main.authentication/signup.js" type="module"></script>
+  <script src="<?= ROOT?>public/assets/js/main/main.authentication/changepwr.js" type="module"></script>
   <script>
   </script>
 </body>

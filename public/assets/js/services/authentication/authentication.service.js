@@ -27,3 +27,16 @@ export async function signUp(form, url) {
       response
     }
 }
+
+export async function changePwr(form, url) {
+
+  const response = await fetch(`${url}authentication/changepwr`, {
+    method: 'POST',
+    body: form
+  });
+
+  return {
+    result,
+    response
+  }
+}
