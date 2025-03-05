@@ -6,7 +6,7 @@ class Controller {
     $filename = "../app/views/".$name.".view.php";
     if (file_exists($filename)) {
 
-      if (($name ==='home') || ($name ==='signin') || ($name === 'signup') || ($name === '500')) {
+      if (($name ==='home') || ($name ==='signin') || ($name === 'signup') || ($name === '500') || ($name === 'changepwr')) {
         require($filename);
       } else {  
         $auth = $this->requireAuth();

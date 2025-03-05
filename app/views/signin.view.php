@@ -43,7 +43,12 @@
         <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
         </div>
       </form>
-      <a href="<?=ROOT?>public/authentication/authentication/signup">Sign Up</a>
+      <div>
+        <a href="<?=ROOT?>public/authentication/authentication/signup">Sign Up</a>
+      </div>
+      <div>
+      <a href="<?=ROOT?>public/authentication/authentication/changepwr">Change Password</a>
+      </div>
     </main>
 
   </section>
