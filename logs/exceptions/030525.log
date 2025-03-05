@@ -1,0 +1,3 @@
+03.05.2025 09:56:59 | User Error | missing username C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.05.2025 10:06:43 | User Error | confirmation password is different from new password C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.05.2025 10:12:26 | User Error | changepwr_json.model.php missing C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Model.php

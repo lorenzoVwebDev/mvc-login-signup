@@ -29,11 +29,20 @@ export async function signUp(form, url) {
 }
 
 export async function changePwr(form, url) {
-
+  let formObject = {}
+  form.forEach((input, key)=> {
+    formObject[key] = input
+  })
+  
   const response = await fetch(`${url}authentication/changepwr`, {
-    method: 'POST',
-    body: form
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formObject)
   });
+
+  const result = await response.text();
 
   return {
     result,

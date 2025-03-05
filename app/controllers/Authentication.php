@@ -61,7 +61,7 @@ class Authentication extends Controller {
         header('Content-Type: application/json');
         $response['result'] = 'Error 500, we are sorry! We are goin to fix that as soon as possible';
         $response['status'] = 500;
-/*         echo json_encode($response); */
+
         require_once(__DIR__ ."//..//models//logs.model.php");
         $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
         $last_log_message = $exception->logException();
@@ -127,7 +127,7 @@ class Authentication extends Controller {
         header('Content-Type: application/json');
         $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
         $response['status'] = 500;
-/*         echo json_encode($response); */
+
         require_once(__DIR__ ."//..//models//logs.model.php");
         $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
         $last_log_message = $exception->logException();
@@ -173,6 +173,69 @@ class Authentication extends Controller {
         header('Content-Type: application/json');
         $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
         $response['status'] = 500;
+        require_once(__DIR__ ."//..//models//logs.model.php");
+        $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
+        echo json_encode($response);
+      }
+    }
+  }
+
+  public function changepwr() {
+    try {
+      if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+        $form_json = file_get_contents('php://input', true);
+        $form = json_decode($form_json, true);
+        if (isset($form['username']) && isset($form['authentication'])) {
+          $credentials['username'] = filter_var($form['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          $type = filter_var($form['authentication'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+          if (isset($form['old-password'])) {
+            $credentials['old-password'] = filter_var($form['old-password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if (isset($form['new-password']) && isset($form['confirm-new-password'])) {
+              $credentials['new-password'] = filter_var($form['new-password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+              $credentials['confirm-new-password'] = filter_var($form['confirm-new-password'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+              if ($credentials['new-password'] === $credentials['confirm-new-password']) {
+                if ($type === 'change-password') {
+                  $model = new Model();
+                  $model->authentication($type, $credentials);
+
+
+                } else {
+                  throw new Exception('wrong authentication type', 401);
+                }
+              } else {  
+                throw new Exception('confirmation password is different from new password', 403);
+              }
+            } else {
+              throw new Exception('missing new password', 401);
+            }
+          } else {
+            throw new Exception('missing old-password', 401);
+          }
+        } else {
+          throw new Exception('missing username', 401);
+        }
+
+      } else {
+        throw new Exception('invalid request method', 400);
+      }
+    } catch (Exception $e) {
+      if ($e->getCode() >= 400 && $e->getCode() < 500) {
+        http_response_code((int) $e->getCode());
+        header('Content-Type: application/json');
+        $response['result'] = $e->getMessage();
+        $response['status'] = $e->getCode();
+        require_once(__DIR__ ."//..//models//logs.model.php");
+        $exception = new Logs_model($e->getMessage()." ".(string) $e->getFile(), 'exception');
+        $last_log_message = $exception->logException();
+        unset($exception);
+        echo json_encode($response);
+      } else {
+        http_response_code(500);
+        header('Content-Type: application/json');
+        $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
+        $response['status'] = 500;
 /*         echo json_encode($response); */
         require_once(__DIR__ ."//..//models//logs.model.php");
         $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
@@ -182,4 +245,5 @@ class Authentication extends Controller {
       }
     }
   }
+
 }

@@ -38,7 +38,7 @@
               <label for="floatingPassword">New Password</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Confirm New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="confirm-new-password" value="Opelagila@23" required>
+              <input type="password" class="form-control rounded-3" id="floatingPasswordConfirm" placeholder="Confirm New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="confirm-new-password" value="Opelagila@23" required>
               <label for="floatingPassword">Confirm New Password</label>
             </div>
             <input type="hidden" name="authentication" value="change-password"/>

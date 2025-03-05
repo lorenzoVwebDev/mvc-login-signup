@@ -158,7 +158,9 @@ class Model {
           unset($signinInstance);
           throw new Exception('Too Many Attempts', 429 );
         }
-      } 
+      } else {
+        throw new Exception('signin_json.model.php missing', 500);
+      }
     } else if ($type === 'sign-up') {
       if (file_exists(__DIR__."//..//models//signup_json.model.php")) {
         require_once(__DIR__."//..//models//signup_json.model.php");
@@ -172,6 +174,14 @@ class Model {
             return $_SESSION['message'];
           }
         }
+      } else {
+        throw new Exception('signup_json.model.php missing', 500);
+      }
+    } else if ($type === 'change-password') {
+      if (file_exists(__DIR__."//..//models//changepwr_json.model.php")) {
+        show($credentials);
+      } else {
+        throw new Exception('changepwr_json.model.php missing', 500);
       }
     }
   }
