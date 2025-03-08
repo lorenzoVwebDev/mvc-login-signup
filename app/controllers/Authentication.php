@@ -198,9 +198,26 @@ class Authentication extends Controller {
               if ($credentials['new-password'] === $credentials['confirm-new-password']) {
                 if ($type === 'change-password') {
                   $model = new Model();
-                  $model->authentication($type, $credentials);
-
-
+                  $changepwr = $model->authentication($type, $credentials);
+                  unset($model);
+                  if ($changepwr === $_SESSION['message']) {
+                    switch ($changepwr) {
+                      case 'pwr-changed':
+                        require_once(__DIR__ ."//..//models//logs.model.php");
+                        $changeLog = new Logs_model($credentials['username']." ".$changepwr, 'access');
+                        $changeLog->logAccess();
+                        http_response_code(200);
+                        $response['message'] = 'Password has been changed';
+                        echo json_encode($response);
+                        break;
+                      case 'invalid-password':
+                        throw new Exception('Invalid password', 401);
+                        break;
+                      case 'user-not-found':
+                        throw new Exception('User not found', 401);
+                        break;
+                    }
+                  }
                 } else {
                   throw new Exception('wrong authentication type', 401);
                 }
@@ -236,7 +253,6 @@ class Authentication extends Controller {
         header('Content-Type: application/json');
         $response['result'] = 'We are sorry! We are goin to fix that as soon as possible';
         $response['status'] = 500;
-/*         echo json_encode($response); */
         require_once(__DIR__ ."//..//models//logs.model.php");
         $exception = new Logs_model($e->getMessage()." ".(string)$e->getFile(), 'exception');
         $last_log_message = $exception->logException();

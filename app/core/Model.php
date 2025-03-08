@@ -179,7 +179,16 @@ class Model {
       }
     } else if ($type === 'change-password') {
       if (file_exists(__DIR__."//..//models//changepwr_json.model.php")) {
-        show($credentials);
+        require_once(__DIR__."//..//models//changepwr_json.model.php");
+        $changepwr = new Changepwr_json($credentials);
+        $pwrchanged = $changepwr->changePassword();
+        if (isset($pwrchanged)) {
+          if ($pwrchanged) {
+            return $_SESSION['message'];
+          } else {
+            return $_SESSION['message'];
+          }
+        }
       } else {
         throw new Exception('changepwr_json.model.php missing', 500);
       }

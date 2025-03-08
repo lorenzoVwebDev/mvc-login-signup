@@ -42,7 +42,7 @@ export async function changePwr(form, url) {
     body: JSON.stringify(formObject)
   });
 
-  const result = await response.text();
+  const result = await response.json();
 
   return {
     result,

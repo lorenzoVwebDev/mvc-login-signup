@@ -1,17 +1,17 @@
 <?php
 
-class Signup_json {
+class Changepwr_json {
   use Jasonwebtoken;
   private array $users_array = array ();
   private string $users_data_json = '';
-  private string $user_signup = '';
-  private string $email_signup = '';
-  private string $password_signup = '';
+  private string $user_changepwr = '';
+  private string $old_password_changepwr = '';
+  private string $new_password_changepwr = '';
 
   function __construct(array $credentials) { 
-    $this->user_signup = $credentials['username'];
-    $this->email_signup = $credentials['email'];
-    $this->password_signup = $credentials['password'];
+    $this->user_changepwr = $credentials['username'];
+    $this->old_password_changepwr = $credentials['old-password'];
+    $this->new_password_changepwr = $credentials['new-password'];
 
     libxml_use_internal_errors(true);
     $xmlDoc = new DOMDocument();
@@ -43,29 +43,23 @@ class Signup_json {
     file_put_contents(__DIR__.$this->users_data_json, $encodedJson);
   }
 
-  function userCreation() {
+  function changePassword() {
     foreach ($this->users_array as &$user) {
-      if ($user['username'] === $this->user_signup) {
-        $_SESSION['message'] = 'existent-username';
-        return false;
-      } else if ($user['email'] === $this->email_signup) {
-        $_SESSION['message'] = 'existent-email';
-        return false;
+      if (in_array($this->user_changepwr, $user)) {
+        $hash = $user['password'];
+        if (password_verify($this->old_password_changepwr, $hash)) {
+          $user['password'] = password_hash($this->new_password_changepwr, PASSWORD_DEFAULT);
+          $user['datestamp'] = strtotime("now");
+          $user['attempts'] = 0;
+          $_SESSION['message'] = 'pwr-changed';
+          return true;
+        } else {
+          $_SESSION['message'] = 'invalid-password';
+          return false;
+        }
       }
     }
-    $hash = password_hash($this->password_signup, PASSWORD_DEFAULT);
-
-    $newUser['username'] = $this->user_signup;
-    $newUser['email'] = $this->email_signup;
-    $newUser['password'] = $hash;
-    $newUser['datestamp'] = strtotime("now");
-    $newUser['attempts'] = 0;
-    $newUser['lastattempt'] = "";
-    $newUser['validattempt'] = "";
-
-    $this->users_array[] = $newUser;
-
-    return $_SESSION['message'] = 'user-created';
-    return true;
+    $_SESSION['message'] = 'user-not-found';
+    return false;
   }
 }
