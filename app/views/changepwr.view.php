@@ -26,19 +26,19 @@
         <div class="modal-body p-5 pt-0">
           <form class="" id="changepwr-form">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username" >
+              <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username" value="lorenzo2">
               <label for="floatingInput">Username</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-3" placeholder="Old Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="old-password"  required>
+              <input type="password" class="form-control rounded-3" placeholder="Old Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="old-password" value="Opelagila@27" required>
               <label for="floatingInput">Old Password</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="new-password"  required>
+              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="new-password" value="Opelagila@28" required>
               <label for="floatingPassword">New Password</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-3" id="floatingPasswordConfirm" placeholder="Confirm New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="confirm-new-password" required>
+              <input type="password" class="form-control rounded-3" id="floatingPasswordConfirm" placeholder="Confirm New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="confirm-new-password" value="Opelagila@28" required>
               <label for="floatingPassword">Confirm New Password</label>
             </div>
             <input type="hidden" name="authentication" value="change-password"/>

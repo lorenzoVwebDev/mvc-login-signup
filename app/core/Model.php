@@ -135,10 +135,9 @@ class Model {
 
   function authentication($type, array $credentials) {
     if ($type === 'sign-in') {
-      if (file_exists(__DIR__."//..//models//signin_json.model.php")) {
-        require_once(__DIR__."//..//models//signin_json.model.php"); 
-
-        $signinInstance = new Signin_json($credentials);
+      if (file_exists(__DIR__."//..//models//signin_mysql.model.php")) {
+        require_once(__DIR__."//..//models//signin_mysql.model.php"); 
+        $signinInstance = new Signin_mysql($credentials);
         $tokens = $signinInstance->userValidation();
         if ($tokens) {
           if (($_SESSION['username'] === $credentials['username']&&$_SESSION['password'] === $credentials['password'])&&(array_key_exists('access_token', $tokens) && array_key_exists('access_token', $tokens))) {
@@ -162,8 +161,8 @@ class Model {
         throw new Exception('signin_json.model.php missing', 500);
       }
     } else if ($type === 'sign-up') {
-      if (file_exists(__DIR__."//..//models//signup_json.model.php")) {
-        require_once(__DIR__."//..//models//signup_json.model.php");
+      if (file_exists(__DIR__."//..//models//signup_mysql.model.php")) {
+        require_once(__DIR__."//..//models//signup_mysql.model.php");
         
         $signUpInstance = new Signup_json($credentials);
         $userCreated = $signUpInstance->userCreation();
@@ -175,20 +174,21 @@ class Model {
           }
         }
       } else {
-        throw new Exception('signup_json.model.php missing', 500);
+        throw new Exception('signup_mysql.model.php missing', 500);
       }
     } else if ($type === 'change-password') {
-      if (file_exists(__DIR__."//..//models//changepwr_json.model.php")) {
-        require_once(__DIR__."//..//models//changepwr_json.model.php");
-        $changepwr = new Changepwr_json($credentials);
+      if (file_exists(__DIR__."//..//models//changepwr_mysql.model.php")) {
+        require_once(__DIR__."//..//models//changepwr_mysql.model.php");
+        $changepwr = new Changepwr_mysql($credentials);
         $pwrchanged = $changepwr->changePassword();
+        unset($changepwr);
         if (isset($pwrchanged)) {
           if ($pwrchanged) {
             return $_SESSION['message'];
           } else {
             return $_SESSION['message'];
           }
-        }
+        } 
       } else {
         throw new Exception('changepwr_json.model.php missing', 500);
       }

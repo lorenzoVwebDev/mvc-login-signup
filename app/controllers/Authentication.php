@@ -37,7 +37,7 @@ class Authentication extends Controller {
               echo json_encode($token);
             }
           } else if (array_key_exists('message', $tokens) && $tokens['message'] === 'changepassword') {
-            $this->view('changepassword');
+            $this->view('changepwr');
           }
         } else {
           throw new Exception('Missing credential\'s', 401);

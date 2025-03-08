@@ -11,3 +11,138 @@
 03.08.2025 03:54:18 | User Error | Invalid password C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
 03.08.2025 03:54:47 | User Error | Invalid password C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
 03.08.2025 04:03:35 | User Error | Invalid password C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.08.2025 05:19:33 | User Error | SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mvc_login_signup.mvc_login_signup' doesn't exist C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Database.php
+03.08.2025 05:20:25 | User Error | SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mvc_login_signup.mvc_login_signup' doesn't exist C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Database.php
+03.08.2025 05:20:34 | User Error | SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mvc_login_signup.mvc_login_signup' doesn't exist C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Database.php
+03.08.2025 05:40:52 | User Error | SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mvc_login_signup.mvc_login_signup' doesn't exist C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Database.php
+03.08.2025 05:41:15 | User Error | SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mvc_login_signup.mvc_login_signup' doesn't exist C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Database.php
+03.08.2025 05:41:36 | User Error | SQLSTATE[42S02]: Base table or view not found: 1146 Table 'mvc_login_signup.mvc_login_signup' doesn't exist C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Database.php
+03.08.2025 06:10:11 | User Error | Unknown column 'lorenzo' in 'field list' C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\changepwr_mysql.model.php
+03.08.2025 06:11:29 | User Error | User not found C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.08.2025 06:17:02 | User Error | signup_json.model.php missing C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Model.php
+03.08.2025 06:18:28 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@libero.it,
+        $2y$10$yJEeCo83SDBFG7Ay.DYLSOYChlMAUR5xIzRmu/RiI6hhoutB8TLC' at line 3 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:20:03 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@libero.it,
+        $2y$10$edeGM4HXOe7lY2yJiV7j2O9Nz7gF/HxJ1puiU68BE/mKD51Txvox' at line 3 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:21:10 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@libero.it,
+        $2y$10$alOW1E3fz0MJBR7NCxPFr.PY.J2M/gvoqCAAfz8WHd2226X7MhTg' at line 3 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:21:27 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@libero.it,
+        $2y$10$2d5Cz3BsHDWQnLFOZI5jwOi396Z9EU3RIM7/2sar19KS9.qwvtl8' at line 3 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:22:44 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@libero.it,
+        $2y$10$qsOq85dqgTaIKD9oGm2OMuOYsLe6S3FPLvcVqgRNKUOOJoqXRQFO' at line 3 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:27:34 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:32:23 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:34:31 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:37:20 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459040,
+        0,
+        ,
+        
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:38:16 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459096,
+        0,
+        null,
+        null
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:39:11 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459151,
+        0,
+        'null',
+        'null'
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:39:58 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459198,
+        0,
+        NULL,
+        NULL
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:40:18 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459218,
+        0,
+        'NULL',
+        'NULL'
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:41:12 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459272,
+        0,
+        NULL,
+        NULL
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:42:42 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459362,
+        0,
+        NULL,
+        NULL
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:44:24 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459463,
+        0,
+        ,
+        
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:46:27 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459587,
+        0,
+        NULL,
+        NULL
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:50:00 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459800,
+        0
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:50:19 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459819,
+        0
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:50:36 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459836,
+        0
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:53:05 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741459985,
+        0
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:56:12 | User Error | Column count doesn't match value count at row 1 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 06:57:27 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        1741460247,
+        0
+      )' at line 5 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signup_mysql.model.php
+03.08.2025 07:02:14 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '@libero.it,
+        $2y$10$R0iB4QQm/LqdXP7EwteQLuGZsg8Zci.r8lmxRzY9DreE2BPe6Js8' at line 3 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:03:56 | User Error | Username or Password are wrong C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Model.php
+03.08.2025 07:04:12 | User Error | Username or Password are wrong C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Model.php
+03.08.2025 07:06:05 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:07:56 | User Error | Username or Password are wrong C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Model.php
+03.08.2025 07:09:30 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:13:50 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:15:47 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:19:23 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:21:27 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:24:31 | User Error | existent-username C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.08.2025 07:24:41 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:33:50 | User Error | existent-username C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\controllers\Authentication.php
+03.08.2025 07:34:28 | User Error | You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ',
+        
+      )' at line 8 C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\models\signin_mysql.model.php
+03.08.2025 07:46:09 | User Error | Username or Password are wrong C:\Users\loren\webDevelopment\phpExcercises\mvc-login-signup\app\core\Model.php

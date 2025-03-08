@@ -15,7 +15,7 @@ export function signInView(result, response, url, event) {
     h1.innerText = result['result'] + ' Please, try to log in again';
     logInForm.append(h1);
     setTimeout(() => {
-      window.location.href = `${url}/authentication/view/signin`;
+      window.location.href = `${url}/authentication/view`;
     }, 3000)
     throw new Error('Server error occured');
   }
