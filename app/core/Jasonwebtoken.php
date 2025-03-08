@@ -49,18 +49,22 @@ trait Jasonwebtoken {
 
   public function requireAuth() {
 
-    if (isset($headers['Authorization'])) {
-
-      $token = str_replace("Bearer ", '', $headers['Authorization']);
-      $decoded = $this->verifyAccessToken($token);
+    if (isset($headers['Authorization'])||isset($_SESSION['access_token'])||isset($_COOKIE['jwtRefresh'])) {
+      if (isset($headers['Authorization'])) {
+        $token = str_replace("Bearer ", '', $headers['Authorization']);
+        $decoded = $this->verifyAccessToken($token);
+      } else if (isset($_SESSION['access_token'])) {
+        $token = $_SESSION['access_token'];
+        $decoded = $this->verifyAccessToken($token);
+      }
     }
-
+    
     if (!isset($decoded)) {
       $refreshToken = $_COOKIE['jwtRefresh'] ?? null;
 
       if (!$refreshToken) {
         http_response_code(401);
-        echo json_encode(['error' => 'missing refresh token']);
+        header('Location: '.ROOT."public/admin/view/signin");
         $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $_SESSION['URL'] = $URL;
         exit;
@@ -83,6 +87,8 @@ trait Jasonwebtoken {
 
       if (!file_exists(__DIR__.$users_data_json)) {
         throw new Exception('user.json is missing', 500);
+        http_response_code(500);
+        header('Location: '.ROOT."public/admin/view/500");
       } 
 
       $jsonFile = file_get_contents(__DIR__.$users_data_json);
@@ -99,7 +105,7 @@ trait Jasonwebtoken {
 
       if (!$refreshTokenBool) {
         http_response_code(401);
-        echo json_encode(['error' => 'missing refresh token']);
+        header('Location: '.ROOT."public/admin/view/signin");
         $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         $_SESSION['URL'] = $URL;
         exit;
@@ -109,7 +115,7 @@ trait Jasonwebtoken {
       
       if (!$refreshDecoded) {
         http_response_code(401);
-        echo json_encode(['error' => 'refresh is expired']);
+        header('Location: '.ROOT."public/admin/view/signin");
         exit;
       }
 
@@ -122,14 +128,16 @@ trait Jasonwebtoken {
         'sub' => $username
       ], $this->accessKey, $this->algorithm);
 
-      header('Content-Type: application/json');
-
       $URL = filter_var($_GET['url'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
       $_SESSION['URL'] = $URL;
-      return $accessToken;
+      $_SESSION['username'] = $username;
+      $_SESSION['access_token'] = $accessToken;
+      return true;
     }
-    }
+  } else {
+    return true;
   }
+ }
 }
 
 

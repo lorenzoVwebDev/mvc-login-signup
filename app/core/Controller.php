@@ -1,28 +1,29 @@
 <?php
-//this file will contain all the common controllers' functions
 
 class Controller {
   use Jasonwebtoken;
   public function view($name) {
-/*     $URL = $this->splitURL(); */
-    //ucfirst is used to capitalize the firs letter of a string
     $filename = "../app/views/".$name.".view.php";
     if (file_exists($filename)) {
-      if (($name ==='home') || ($name ==='signin') || ($name === 'signup')) {
+
+      if (($name ==='home') || ($name ==='signin') || ($name === 'signup') || ($name === '500') || ($name === 'changepwr')) {
         require($filename);
       } else {  
-        $accessToken = $this->requireAuth();
-        ob_start();
-        require($filename);
-        $page = ob_get_clean();
-        $response['access_token'] = $accessToken;
-        $response['html'] = $page;
-        echo json_encode($response);
+        $auth = $this->requireAuth();
+        if ($auth) {
+          header('Content-Type: text/html');
+          ob_start();
+          require_once($filename);
+          $buffer = ob_get_clean();
+          echo $buffer;
+        } else {
+
+        }
       }
     } else {
       $filename = '../App/views/404.view.php';
       require($filename);
-/*       throw new Exception($filename.'controller not found'); */
     }
   }
+
 }

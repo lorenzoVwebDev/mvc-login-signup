@@ -20,26 +20,30 @@
     <div class="d-flex flex-column" role="document">
       <div class="modal-content rounded-4 shadow">
         <div class="modal-header p-5 pb-4 border-bottom-0">
-          <h1 class="fw-bold mb-0 fs-2">Sign up for free</h1>
+          <h1 class="fw-bold mb-0 fs-2">Change Your Password</h1>
         </div>
 
         <div class="modal-body p-5 pt-0">
-          <form class="" id="sign-up-form">
+          <form class="" id="changepwr-form">
             <div class="form-floating mb-3">
-              <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username">
+              <input type="text" class="form-control rounded-3" placeholder="name@example.com" pattern="[a-zA-Z0-9]{8,20}" required name="username" >
               <label for="floatingInput">Username</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control rounded-3" placeholder="name@example.com" name="email" required>
-              <label for="floatingInput">email</label>
+              <input type="password" class="form-control rounded-3" placeholder="Old Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="old-password"  required>
+              <label for="floatingInput">Old Password</label>
             </div>
             <div class="form-floating mb-3">
-              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="password" required>
-              <label for="floatingPassword">Password</label>
+              <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="new-password"  required>
+              <label for="floatingPassword">New Password</label>
             </div>
-            <input type="hidden" name="authentication" value="sign-up"/>
-            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" id="signup-submit-button" type="submit">Sign up</button>
-            <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-3" id="floatingPasswordConfirm" placeholder="Confirm New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="confirm-new-password" required>
+              <label for="floatingPassword">Confirm New Password</label>
+            </div>
+            <input type="hidden" name="authentication" value="change-password"/>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" id="changepwr-submit-button" type="submit">Change Password</button>
+            <small class="text-body-secondary">By clicking on Change Password you agree to set a new password for your account</small>
           </form>
         </div>
       </div>
@@ -55,7 +59,7 @@
 
   <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
-  <script src="<?= ROOT?>public/assets/js/main/main.authentication/signup.js" type="module"></script>
+  <script src="<?= ROOT?>public/assets/js/main/main.authentication/changepwr.js" type="module"></script>
   <script>
   </script>
 </body>

@@ -1,31 +1,21 @@
-//services
-import { requestDashboard } from '../services/home/requestdashboard.service.js'
-//views
-import { renderProject } from '../view/pagerendering/dashboard.view.js';
-//global variables
-import { url, accessToken } from '../utils/globalVariables.js'
+import {url} from '../utils/globalVariables.js'
 
 window.addEventListener('load', () => {
-  addPopState()
-  history.replaceState(undefined, '', url);
-  document.getElementById('dashboard-link').addEventListener('click', async () => {
-    const responseObject = await requestDashboard(accessToken, url);
-    const {htmlResult, webPageResponse} = responseObject;
-    const state = {
-      htmlResult
+  document.getElementById('log-out-button').addEventListener('click', async (event) => {
+    const responseObject = await fetch(`${url}authentication/logout/access`, {
+      method: 'DELETE'
+    })
+    
+    if (responseObject.status >= 200) {
+      const response = await responseObject.json();
+      document.cookie.split("; ").forEach(cookie => {
+        if (cookie.includes("jwtRefresh=")) {
+            document.cookie = "jwtRefresh=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+    });
+    
+      window.location.href = url;
     }
-    history.pushState(state.htmlResult, '', url+'dashboard/');
-    renderProject();
+
   })
 })
-
-function addPopState() {
-  window.addEventListener("popstate", (event) => {
-    if (event.currentTarget.location.pathname === '/public/dashboard/') {
-      renderProject();
-    } else {
-      const popstateurl = event.currentTarget.location.href;
-      open(popstateurl, '_self');
-    }
-  });
-}

@@ -1,6 +1,3 @@
-<?php 
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +24,11 @@
 
         <div class="form-floating">
           <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" pattern="^(?=.{8,}$)([a-zA-Z0-9._-]+|[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$
-  " form="sign-in-form" value="lorenzo" name="username" required>
+  " form="sign-in-form" name="username" required>
           <label for="floatingInput">Email address</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" value="Domenica@47" name="password" form="sign-in-form" required>
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$" name="password" form="sign-in-form" required>
           <label for="floatingPassword">Password</label>
         </div>
 
@@ -46,7 +43,12 @@
         <p class="mt-5 mb-3 text-body-secondary">&copy; 2017–2024</p>
         </div>
       </form>
-      <a href="<?=ROOT?>public/authentication/authentication/signup">Sign Up</a>
+      <div>
+        <a href="<?=ROOT?>public/authentication/authentication/signup">Sign Up</a>
+      </div>
+      <div>
+      <a href="<?=ROOT?>public/authentication/authentication/changepwr">Change Password</a>
+      </div>
     </main>
 
   </section>

@@ -140,12 +140,57 @@ class Model {
 
         $signinInstance = new Signin_json($credentials);
         $tokens = $signinInstance->userValidation();
-        if (($_SESSION['username'] === $credentials['username']&&$_SESSION['password'] === $credentials['password'])&&(array_key_exists('access_token', $tokens) && array_key_exists('access_token', $tokens))) {
+        if ($tokens) {
+          if (($_SESSION['username'] === $credentials['username']&&$_SESSION['password'] === $credentials['password'])&&(array_key_exists('access_token', $tokens) && array_key_exists('access_token', $tokens))) {
+            unset($signinInstance);
+            return $tokens;
+          } else {
+            throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');
+          } 
+        } else if ($tokens === false && $_SESSION['message'] === "changepassword") {
+          return array (
+            'message' => $_SESSION['message']
+          );
+        } else if ($tokens === false && $_SESSION['message'] === "invalid") {
           unset($signinInstance);
-          return $tokens;
-        } else {
-          throw new Exception('$_SESSION["username"] and $_SESSION["password"] have not been set correctly with the user\'s username and password');
-        } 
+          throw new Exception('Username or Password are wrong', 401);
+        } else if ($tokens === false && $_SESSION['message'] === "passed") {
+          unset($signinInstance);
+          throw new Exception('Too Many Attempts', 429 );
+        }
+      } else {
+        throw new Exception('signin_json.model.php missing', 500);
+      }
+    } else if ($type === 'sign-up') {
+      if (file_exists(__DIR__."//..//models//signup_json.model.php")) {
+        require_once(__DIR__."//..//models//signup_json.model.php");
+        
+        $signUpInstance = new Signup_json($credentials);
+        $userCreated = $signUpInstance->userCreation();
+        if (isset($userCreated)) {
+          if ($userCreated) {
+            return $_SESSION['message'];
+          } else {
+            return $_SESSION['message'];
+          }
+        }
+      } else {
+        throw new Exception('signup_json.model.php missing', 500);
+      }
+    } else if ($type === 'change-password') {
+      if (file_exists(__DIR__."//..//models//changepwr_json.model.php")) {
+        require_once(__DIR__."//..//models//changepwr_json.model.php");
+        $changepwr = new Changepwr_json($credentials);
+        $pwrchanged = $changepwr->changePassword();
+        if (isset($pwrchanged)) {
+          if ($pwrchanged) {
+            return $_SESSION['message'];
+          } else {
+            return $_SESSION['message'];
+          }
+        }
+      } else {
+        throw new Exception('changepwr_json.model.php missing', 500);
       }
     }
   }

@@ -26,6 +26,6 @@
   <section class="footer-section"></section>
   <script src="<?= ROOT?>public/assets/bootstrap.assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="<?= ROOT?>public/assets/js/common-components/index.js" type="module"></script>
-  <script async src="<?= ROOT?>public/assets/js/home.js" type="module"></script>
+  <script async src="<?= ROOT?>public/assets/js/main/home.js" type="module"></script>
 </body>
 </html>
