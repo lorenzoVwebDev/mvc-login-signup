@@ -38,5 +38,5 @@ if ($_SERVER['SERVER_NAME'] == 'mvc-login-signup') {
 };
 
 //used to set debug mode on or off, in debug mode on we are goin to show all the errors, is used only in development modality, once that the application is online is must be set as false in order to not show users what errors happen
-define('DEBUG', true);
+define('DEBUG', false);
 
